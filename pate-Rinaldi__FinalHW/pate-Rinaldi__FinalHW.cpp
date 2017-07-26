@@ -42,6 +42,16 @@ public:
 		this->size = size;
 	}
 
+	int getSize()
+	{
+		return size;
+	}
+
+	int getNumElements()
+	{
+		return numElements;
+	}
+
 	// Add an element to the end of the vector
 	void push_back(T value)
 	{
@@ -85,13 +95,11 @@ public:
 	{
 		values[index] = NULL;
 
-		numElements--;
-
 		for (int i = index; i < numElements; i++)
-		{
-			values[index] = values[index + 1];
+		{  
+			values[i] = values[i + 1];
 		}
-
+		numElements--;
 		
 	}
 
@@ -115,6 +123,8 @@ public:
 				printItem(values[index]);
 			}
 		}
+
+		cout << endl;
 	}
 
 	// Insert element at a specific index
@@ -125,41 +135,65 @@ public:
 			increase_size(size * 2);
 		}
 
-		if (index < size)
-		{
 			
-			for (int i = index; i < size; i++)
-			{
-				if (values[i] != NULL)
-				{
-					T hold = values[i];
-					values[i] = value;
-					value = hold;
-				}
-			}
-
-			numElements++;
-
+		for (int i = index; i <= numElements + 1; i++)
+		{
+				T hold = values[i];
+				values[i] = value;
+				value = hold;
 		}
+
+		numElements++;
+
 	}
 
 	// reset the vector
 	void reset()
 	{
-		values->reset();
-		values = new shared_ptr<T>[100];
+		values = NULL;
+		delete[] values;
+		numElements = 0;
+		values = new T[size];
+
 	}
 
 	// Append vector onto this vector
-	void append(MyVector vector)
+	void append(MyVector &vector)
 	{
+		if ((numElements + vector.getNumElements()) > size)
+		{
+			increase_size(size * 2 + vector.getNumElements());
+		}
 
+		for (int i = 0; i < vector.numElements; i ++)
+		{
+			push_back(vector[i]);
+		}
 	}
 
-	// Sort the Vector
-	T sort(function<int(T, T)> compare, int order)
+	// Sort the Vector - 1 is sort descending, otherwise sort ascending (standard is 0)
+	void sort(function<int(T, T)> compare, int order)
 	{
+		// Do descending sort order
+		
+		if (order == 1)
+		{
+			for (int j = 0; j < numElements - 1; j++)
+			{
+				for (int i = 0; i < numElements - 1; i++)
+				{
+					T greater = compare(values[i], values[i + 1]);
 
+					if (greater == values[i])
+					{
+						T hold = values[i];
+						values[i] = values[i + 1];
+						values[i + 1] = hold;
+
+					}
+				}
+			}
+		}
     }
 
 	// Reverse the Vector
@@ -171,7 +205,7 @@ public:
 	// Allow vector indexes to be accessed with brackets
 	T& operator[](int i)
 	{
-		if (i < 0 || i >= n)
+		if (i < 0 || i >= numElements)
 		{
 			throw exception("Out of Bounds");
 		}
@@ -181,6 +215,11 @@ public:
 };
 
 void printInt(int i);
+void printChar(char c);
+int intCompare(int x, int y);
+
+const int SORT_ASCENDING = 0;
+const int SORT_DESCENDING = 1;
 int main()
 {
 	MyVector<int> test;
@@ -192,18 +231,57 @@ int main()
 	test.push_front(1);
 	test.push_back(6);
 
-	test.insertAt(2, 10);
-	// test printing the vector
+	cout << "Printing intial Vector..." << endl << endl;
 	test.print(0, 10, printInt);
 
-	//// test removing at certain location
-	//test.removeAt(1);
-	//test.print(0, 10, printInt);
+	
+	// test removing at certain location
+	test.removeAt(1);
+	cout << "Printing vector when index 1 is removed..." << endl << endl;
+	test.print(0, 10, printInt);
 
-	////Test popping from Vector and returning last item
-	//int pop = test.pop();
-	//cout << "From Pop: " << pop << endl << endl;
-	//test.print(0, 10, printInt);
+	//Test popping from Vector and returning last item
+	int pop = test.pop();
+	cout << "Testing popping from bottom of vector and returning that element..." << endl << endl;
+	cout << "From Pop: " << pop << endl << endl;
+	test.print(0, 10, printInt);
+
+	//Test inserting at a certain index
+	test.insertAt(2, 10);
+	
+	cout << "Testing inserting the number 10 at index 2..." << endl << endl;
+	test.print(0, 10, printInt);
+
+	// Testing append using second vector
+	MyVector<int> append; 
+
+	append.push_front(100);
+	append.push_back(101);
+	append.push_back(100);
+	append.push_back(8);
+	append.push_back(1001);
+	append.push_front(99);
+
+	cout << "Printing second vector" << endl << endl;
+	append.print(0, 10, printInt);
+
+	test.append(append);
+
+	cout << "Printing original vector with second vector appended to it" << endl << endl;
+	test.print(0, 50, printInt);
+
+	//Testing descending sort on first vector
+	test.sort(intCompare, SORT_DESCENDING);
+
+	cout << "Printing the first vector in descending order..." << endl << endl;
+	test.print(0, 50, printInt);
+
+	//Testing resetting the vector
+	test.reset();
+	cout << "Resetting the vector (nothing should be printed)" << endl << endl;
+	test.print(0, 10, printInt);
+
+
 
     return 0;
 }
@@ -213,4 +291,23 @@ void printInt(int i)
 {
 	cout << i << endl;
 }
+void printChar(char c)
+{
+	cout << c << endl;
+}
+
+// Compare that returns the biggest number
+int intCompare(int x, int y)
+{
+	if (x > y)
+	{
+		return x;
+	}
+
+	else
+	{
+		return y;
+	}
+}
+
 

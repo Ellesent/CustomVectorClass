@@ -1,1 +1,15 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.Cpp.Platform.targets(57,5): error MSB8020: The build tools for v141 (Platform Toolset = 'v141') cannot be found. To build using the v141 build tools, please install v141 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Retarget solution".
+﻿  pate-Rinaldi__FinalHW.cpp
+c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(121): warning C4018: '<': signed/unsigned mismatch
+  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(117): note: while compiling class template member function 'void MyVector<int>::print(unsigned long,unsigned long,std::function<void (T)>)'
+          with
+          [
+              T=int
+          ]
+  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(235): note: see reference to function template instantiation 'void MyVector<int>::print(unsigned long,unsigned long,std::function<void (T)>)' being compiled
+          with
+          [
+              T=int
+          ]
+  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(225): note: see reference to class template instantiation 'MyVector<int>' being compiled
+  pate-Rinaldi__FinalHW.vcxproj -> C:\Git\CustomVectorClass\x64\Debug\pate-Rinaldi__FinalHW.exe
+  pate-Rinaldi__FinalHW.vcxproj -> C:\Git\CustomVectorClass\x64\Debug\pate-Rinaldi__FinalHW.pdb (Partial PDB)
