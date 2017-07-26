@@ -32,10 +32,12 @@ protected:
 	T *values;
 	int size;
 	int numElements;
+	
+
 
 public:
 	// Constructor with default size, or size can be passed in
-	MyVector(int size = 100)
+	MyVector(int size = 1)
 	{
 		values = new  T[size];
 		numElements = 0;
@@ -50,6 +52,19 @@ public:
 	int getNumElements()
 	{
 		return numElements;
+	}
+
+	typedef const T * const_iterator;
+	typedef T* iterator;
+	
+	iterator begin() 
+	{
+		return &values[0];
+	}
+
+	iterator end()
+	{
+		return &values[numElements];
 	}
 
 	// Add an element to the end of the vector
@@ -175,8 +190,28 @@ public:
 	void sort(function<int(T, T)> compare, int order)
 	{
 		// Do descending sort order
-		
+
 		if (order == 1)
+		{
+			for (int j = 0; j < numElements - 1; j++)
+			{
+				for (int i = 0; i < numElements - 1; i++)
+				{
+					T greater = compare(values[i], values[i + 1]);
+
+					if (greater == values[i + 1])
+					{
+						T hold = values[i];
+						values[i] = values[i + 1];
+						values[i + 1] = hold;
+
+					}
+				}
+			}
+		}
+
+		// do ascending order
+		else
 		{
 			for (int j = 0; j < numElements - 1; j++)
 			{
@@ -194,18 +229,25 @@ public:
 				}
 			}
 		}
-    }
+	}
 
 	// Reverse the Vector
 	void reverse()
 	{
+		T *newArray = new T[size];
 
+		for (int i = 0; i < numElements; i++)
+		{
+			newArray[i] = values[numElements - i - 1];
+		}
+		delete[] values;
+		values = newArray;
 	}
 
 	// Allow vector indexes to be accessed with brackets
 	T& operator[](int i)
 	{
-		if (i < 0 || i >= numElements)
+		if (i >= numElements)
 		{
 			throw exception("Out of Bounds");
 		}
@@ -214,6 +256,7 @@ public:
 
 };
 
+// Prototypes
 void printInt(int i);
 void printChar(char c);
 int intCompare(int x, int y);
@@ -275,6 +318,27 @@ int main()
 
 	cout << "Printing the first vector in descending order..." << endl << endl;
 	test.print(0, 50, printInt);
+
+	//Testing ascending order on a new vector
+	MyVector<int> sort;
+	sort.push_back(565);
+	sort.push_front(1001);
+	sort.push_back(2);
+	sort.push_back(68);
+	sort.push_front(5678);
+	sort.push_back(42);
+
+	cout << "Printing new vector..." << endl << endl;
+	sort.print(0, 50, printInt);
+	cout << "Printing new vector in ascending order..." << endl << endl;
+	sort.sort(intCompare, SORT_ASCENDING);
+	sort.print(0, 50, printInt);
+
+	//Testing reversing the sorted vector
+	cout << "Reversing the sorted vector..." << endl << endl;
+	sort.reverse();
+	sort.print(0, 50, printInt);
+
 
 	//Testing resetting the vector
 	test.reset();

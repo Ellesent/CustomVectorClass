@@ -1,15 +1,15 @@
 ﻿  pate-Rinaldi__FinalHW.cpp
-c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(121): warning C4018: '<': signed/unsigned mismatch
-  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(117): note: while compiling class template member function 'void MyVector<int>::print(unsigned long,unsigned long,std::function<void (T)>)'
+c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(136): warning C4018: '<': signed/unsigned mismatch
+  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(132): note: while compiling class template member function 'void MyVector<int>::print(unsigned long,unsigned long,std::function<void (T)>)'
           with
           [
               T=int
           ]
-  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(235): note: see reference to function template instantiation 'void MyVector<int>::print(unsigned long,unsigned long,std::function<void (T)>)' being compiled
+  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(278): note: see reference to function template instantiation 'void MyVector<int>::print(unsigned long,unsigned long,std::function<void (T)>)' being compiled
           with
           [
               T=int
           ]
-  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(225): note: see reference to class template instantiation 'MyVector<int>' being compiled
+  c:\git\customvectorclass\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(268): note: see reference to class template instantiation 'MyVector<int>' being compiled
   pate-Rinaldi__FinalHW.vcxproj -> C:\Git\CustomVectorClass\x64\Debug\pate-Rinaldi__FinalHW.exe
   pate-Rinaldi__FinalHW.vcxproj -> C:\Git\CustomVectorClass\x64\Debug\pate-Rinaldi__FinalHW.pdb (Partial PDB)
