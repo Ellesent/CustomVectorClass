@@ -1,0 +1,26 @@
+﻿  pate-Rinaldi__FinalHW.cpp
+c:\users\cool-\downloads\pate-rinaldi__finalhw\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(128): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cool-\downloads\pate-rinaldi__finalhw\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(122): note: while compiling class template member function 'void MyVector<int>::insertAt(unsigned long,T)'
+          with
+          [
+              T=int
+          ]
+  c:\users\cool-\downloads\pate-rinaldi__finalhw\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(195): note: see reference to function template instantiation 'void MyVector<int>::insertAt(unsigned long,T)' being compiled
+          with
+          [
+              T=int
+          ]
+  c:\users\cool-\downloads\pate-rinaldi__finalhw\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(186): note: see reference to class template instantiation 'MyVector<int>' being compiled
+c:\users\cool-\downloads\pate-rinaldi__finalhw\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(113): warning C4018: '<': signed/unsigned mismatch
+  c:\users\cool-\downloads\pate-rinaldi__finalhw\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(109): note: while compiling class template member function 'void MyVector<int>::print(unsigned long,unsigned long,std::function<void (T)>)'
+          with
+          [
+              T=int
+          ]
+  c:\users\cool-\downloads\pate-rinaldi__finalhw\pate-rinaldi__finalhw\pate-rinaldi__finalhw.cpp(197): note: see reference to function template instantiation 'void MyVector<int>::print(unsigned long,unsigned long,std::function<void (T)>)' being compiled
+          with
+          [
+              T=int
+          ]
+  pate-Rinaldi__FinalHW.vcxproj -> C:\Users\cool-\Downloads\pate-Rinaldi__FinalHW\Debug\pate-Rinaldi__FinalHW.exe
+  pate-Rinaldi__FinalHW.vcxproj -> C:\Users\cool-\Downloads\pate-Rinaldi__FinalHW\Debug\pate-Rinaldi__FinalHW.pdb (Partial PDB)
